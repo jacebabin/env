@@ -53,7 +53,7 @@ func NewDatastore() (*Datastore, error) {
 	const op errors.Op = "env/datastore/NewDatastore"
 
 	// Get an AppDB (PostgreSQL)
-	adb, err := newDB(AppDB)
+	adb, err := NewDB(AppDB)
 	if err != nil {
 		return nil, errors.E(op, err)
 	}
@@ -148,6 +148,17 @@ func dbEnvName(n DBName) string {
 }
 
 func dbEnvUser(n DBName) string {
+	switch n {
+	case AppDB:
+		return envAppDBUser
+	case LogDB:
+		return envLogDBUser
+	default:
+		return ""
+	}
+}
+
+func dbEnvPassword(n DBName) string {
 	switch n {
 	case AppDB:
 		return envAppDBPassword
