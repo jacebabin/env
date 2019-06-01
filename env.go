@@ -42,8 +42,8 @@ type Env struct {
 	Name Name
 	// multiplex router
 	Router *mux.Router
-	// Datastore struct containing AppDB (PostgresSQL)
-	// LogDb (PostgresSQL) and CacheDB (Redis)
+	// Datastore struct containing AppDB (PostgreSQL)
+	// LogDb (PostgreSQL) and CacheDB (Redis)
 	DS *datastore.Datastore
 	// Logger
 	Logger zerolog.Logger
